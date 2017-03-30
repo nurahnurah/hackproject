@@ -34,23 +34,11 @@ var wipeScreen = function () {
 //Bagel base
 
 
-var bagelTypeArray = {
-	1: "Superman", 
-	2: "Kimchi",
-	3: "Banana-Split"
-};
+var bagelTypeArray = ["Superman", "Kimchi", "Banana-Split"];
 
-var bagelToastArray = {
-	1: "Burnt", 
-	2: "Lite",
-	3: "None"
-};
+var bagelToastArray = ["Burnt", "Lite", "None"];
 
-var bagelSpreadArray = {
-	1: "Funfetti", 
-	2: "Chocosplosion",
-	3: "Salmon D-Lite"
-};
+var bagelSpreadArray = ["Funfetti", "Chocosplosion", "Salmon D-Lite"];
 
 var bagelsMade = [];
 
@@ -64,8 +52,8 @@ var bagelsMade = [];
 
 //Bagel Constructor
 
-function Bagel(bagelType, toast, spread, price) {
-	this.bagelType = bagelType;
+function Bagel(type, toast, spread, price) {
+	this.type = type;
 	this.toast = toast;
 	this.spread = spread;
 	this.price = price;
@@ -79,24 +67,29 @@ function Bagel(bagelType, toast, spread, price) {
 
 //Functions******************
 
+
+//Screen displayers
 function bagelTypeMessage() {
 	for (var i in bagelTypeArray) {
-		console.log((i) + " " + bagelTypeArray[i]);
+		console.log((parseInt(i)+1) + " " + bagelTypeArray[i]);
 	}
 };
 
 function bagelToastMessage() {
 	for (var i in bagelToastArray) {
-		console.log((i) + " " + bagelToastArray[i]);
+		console.log((parseInt(i)+1) + " " + bagelToastArray[i]);
 	}
 };
 
 function bagelSpreadMessage() {
 	for (var i in bagelSpreadArray) {
-		console.log((i) + " " + bagelSpreadArray[i]);
+		console.log((parseInt(i)+1) + " " + bagelSpreadArray[i]);
 	}
 };
 
+
+
+//Make Bagel Feature
 function makeABagel() {
 	var bagelType;
 	var bagelToast;
