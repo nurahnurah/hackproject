@@ -91,15 +91,24 @@ function bagelSpreadMessage() {
 
 //Make Bagel Feature
 function makeABagel() {
+	//new clean bagel to work with
 	var bagelType;
 	var bagelToast;
 	var bagelSpread;
+
+	//start new bagel process
+	wipeScreen();
+	console.log("Let's make a Bagel!")
+	sleep(1000);
+
 	function selectionProcess1() {
 		//var accumulatingPrice = 0.00
 
 
 		//bagel selection
 		//which bagel do you want?
+		wipeScreen();
+		console.log("What bagel type would you like?");
 		bagelTypeMessage();
 		userPrompt.question("", function(choice) {
 			if (choice == 1) {
@@ -128,6 +137,8 @@ function makeABagel() {
 
 		//toast selection
 		//which toast type do you want?
+		wipeScreen();
+		console.log("How would you like it toasted?");
 		bagelToastMessage();
 		userPrompt.question("", function(choice) {
 			if (choice == 1) {
@@ -156,6 +167,8 @@ function makeABagel() {
 
 		//spread selection
 		//which spread do you want?
+		wipeScreen();
+		console.log("Finally, what spread would you like?");
 		bagelSpreadMessage();
 		userPrompt.question("", function(choice) {
 			if (choice == 1) {
@@ -180,6 +193,7 @@ function makeABagel() {
 
 	function finalProcess() {
 		//Here's what you have
+		wipeScreen();
 		console.log("Alright so here's your order...");
 		sleep(1000);
 		console.log("Bagel: " + bagelType + " / Toasted: " + bagelToast + " / With a " + bagelSpread + " spread.");
