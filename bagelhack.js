@@ -34,12 +34,17 @@ var wipeScreen = function () {
 //Bagel base
 
 
-var bagelArray = {
-	superman:"1) Superman", 
-	kimchi: "2) Kimchi",
-	bananasplit: "3) Banana-Split"
+var bagelTypeArray = {
+	1: "Superman", 
+	2: "Kimchi",
+	3: "Banana-Split"
 }
 
+var bagelSpreadArray = {
+	1: "Funfetti", 
+	2: "Chocosplosion",
+	3: "Salmon D-Lite"
+}
 
 var bagelsMade = [];
 
@@ -53,10 +58,10 @@ var bagelsMade = [];
 
 //Bagel Constructor
 
-function Bagel(bagelType, spread, toast, price) {
+function Bagel(bagelType, toast, spread, price) {
 	this.bagelType = bagelType;
-	this.spread = spread;
 	this.toast = toast;
+	this.spread = spread;
 	this.price = price;
 }
 
@@ -68,9 +73,15 @@ function Bagel(bagelType, spread, toast, price) {
 
 //Functions******************
 
-function bagelSelectMessage() {
-	for (var i in bagelArray) {
-		console.log(bagelArray[i]);
+function bagelTypeMessage() {
+	for (var i in bagelTypeArray) {
+		console.log((i) + " " + bagelTypeArray[i]);
+	}
+}
+
+function bagelSpreadMessage() {
+	for (var i in bagelSpreadArray) {
+		console.log((i) + " " + bagelSpreadArray[i]);
 	}
 }
 
@@ -81,18 +92,17 @@ function selectionProcess1() {
 
 	//bagel selection
 	//which bagel do you want?
-	bagelSelectMessage();
+	bagelTypeMessage();
 	userPrompt.question("", function(bagelType) {
-		//person chooses superman type
 		if (bagelType == 1) {
 			bagelType = "Superman";
-			// selectionProcess2();
+			selectionProcess2();
 		} else if (bagelType == 2) {
 			bagelType = "Kimchi";
-			// selectionProcess2();
+			selectionProcess2();
 		} else if (bagelType == 3) {
 			bagelType = "Banana-Split";
-			// selectionProcess2();
+			selectionProcess2();
 		} else if (bagelType == 0) {
 			//leave this part go back to menu
 		} else {
@@ -101,9 +111,36 @@ function selectionProcess1() {
 			sleep(1000);
 			selectionProcess1();
 		}
-
-
 	});
+}
+
+function selectionProcess2() {
+	//var accumulatingPrice = 0.00
+
+
+	//spread selection
+	//which spread do you want?
+	bagelSpreadMessage();
+	userPrompt.question("", function(bagelSpread) {
+		if (bagelSpread == 1) {
+			bagelSpread = "Superman";
+			// selectionProcess2();
+		} else if (bagelSpread == 2) {
+			bagelSpread = "Kimchi";
+			// selectionProcess2();
+		} else if (bagelSpread == 3) {
+			bagelSpread = "Banana-Split";
+			// selectionProcess2();
+		} else if (bagelSpread == 0) {
+			//leave this part go back to menu
+		} else {
+			console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
+			// sleep(2000);
+			sleep(1000);
+			selectionProcess2();
+		}
+	});
+}
 
 	//toast selection
 	//How dark/lite do you want it to be toasted?
@@ -115,10 +152,6 @@ function selectionProcess1() {
 	//compile price?
 
 	//yourBagel = new Bagel(Xx,xx,xx,accumulatingPrice)
-
-}
-
-
 
 //Runners******************
 
