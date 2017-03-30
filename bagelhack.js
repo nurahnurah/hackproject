@@ -40,6 +40,12 @@ var bagelTypeArray = {
 	3: "Banana-Split"
 }
 
+var bagelToastArray = {
+	1: "Burnt", 
+	2: "Lite",
+	3: "None"
+}
+
 var bagelSpreadArray = {
 	1: "Funfetti", 
 	2: "Chocosplosion",
@@ -76,6 +82,12 @@ function Bagel(bagelType, toast, spread, price) {
 function bagelTypeMessage() {
 	for (var i in bagelTypeArray) {
 		console.log((i) + " " + bagelTypeArray[i]);
+	}
+}
+
+function bagelToastMessage() {
+	for (var i in bagelToastArray) {
+		console.log((i) + " " + bagelToastArray[i]);
 	}
 }
 
@@ -118,26 +130,54 @@ function selectionProcess2() {
 	//var accumulatingPrice = 0.00
 
 
-	//spread selection
-	//which spread do you want?
-	bagelSpreadMessage();
-	userPrompt.question("", function(bagelSpread) {
-		if (bagelSpread == 1) {
-			bagelSpread = "Superman";
-			// selectionProcess2();
-		} else if (bagelSpread == 2) {
-			bagelSpread = "Kimchi";
-			// selectionProcess2();
-		} else if (bagelSpread == 3) {
-			bagelSpread = "Banana-Split";
-			// selectionProcess2();
-		} else if (bagelSpread == 0) {
+	//toast selection
+	//which toast type do you want?
+	bagelToastMessage();
+	userPrompt.question("", function(bagelToast) {
+		if (bagelToast == 1) {
+			bagelToast = "Burnt";
+			selectionProcess3();
+		} else if (bagelToast == 2) {
+			bagelToast = "Lite";
+			selectionProcess3();
+		} else if (bagelToast == 3) {
+			bagelToast = "None";
+			selectionProcess3();
+		} else if (bagelToast == 0) {
 			//leave this part go back to menu
 		} else {
 			console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
 			// sleep(2000);
 			sleep(1000);
 			selectionProcess2();
+		}
+	});
+}
+
+function selectionProcess3() {
+	//var accumulatingPrice = 0.00
+
+
+	//spread selection
+	//which spread do you want?
+	bagelSpreadMessage();
+	userPrompt.question("", function(bagelSpread) {
+		if (bagelSpread == 1) {
+			bagelSpread = "Funfetti";
+			// finalProcess();
+		} else if (bagelSpread == 2) {
+			bagelSpread = "Chocosplosion";
+			// finalProcess();
+		} else if (bagelSpread == 3) {
+			bagelSpread = "Salmon D-Lite";
+			// finalProcess();
+		} else if (bagelSpread == 0) {
+			//leave this part go back to menu
+		} else {
+			console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
+			// sleep(2000);
+			sleep(1000);
+			selectionProcess3();
 		}
 	});
 }
