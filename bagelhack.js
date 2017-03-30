@@ -35,10 +35,13 @@ var wipeScreen = function () {
 
 
 var bagelTypeArray = ["Cancel Order", "Superman", "Kimchi", "Banana-Split"];
+var bagelTypePriceArray = ["", "44.99", "3.99", "14.99"];
 
 var bagelToastArray = ["Cancel Order", "Burnt", "Lite", "None"];
+var bagelToastPriceArray = ["", "6.99", "8.99", "50.99"];
 
 var bagelSpreadArray = ["Cancel Order", "Funfetti", "Chocosplosion", "Salmon D-Lite"];
+var bagelSpreadPriceArray = ["", "8.99", "33.99", "3.99"];
 
 var menuArray = ["Make a Bagel", "Recently Made Bagels", "Exit Bagel Maker"]
 
@@ -73,19 +76,19 @@ bagelsMade.push(lastBagel);
 //Screen displayers
 function bagelTypeMessage() {
 	for (var i in bagelTypeArray) {
-		console.log((parseInt(i)) + " " + bagelTypeArray[i]);
+		console.log((parseInt(i)) + " " + bagelTypeArray[i] + " " + bagelTypePriceArray[i]);
 	}
 };
 
 function bagelToastMessage() {
 	for (var i in bagelToastArray) {
-		console.log((parseInt(i)) + " " + bagelToastArray[i]);
+		console.log((parseInt(i)) + " " + bagelToastArray[i] + " " + bagelToastPriceArray[i]);
 	}
 };
 
 function bagelSpreadMessage() {
 	for (var i in bagelSpreadArray) {
-		console.log((parseInt(i)) + " " + bagelSpreadArray[i]);
+		console.log((parseInt(i)) + " " + bagelSpreadArray[i] + " " + bagelSpreadPriceArray[i]);
 	}
 };
 
