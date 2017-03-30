@@ -65,7 +65,7 @@ function Bagel(type, toast, spread, price) {
 };
 
 
-
+lastBagel = new Bagel(Kimchi, Burnt, Chocosplosion, 44.97)
 
 
 
@@ -129,7 +129,9 @@ function mainMenu() {
 }
 
 
-
+function recallBagel() {
+	
+}
 
 
 
