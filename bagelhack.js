@@ -167,13 +167,13 @@ function makeABagel() {
 		userPrompt.question("", function(bagelSpread) {
 			if (bagelSpread == 1) {
 				bagelSpread = "Funfetti";
-				// finalProcess();
+				finalProcess();
 			} else if (bagelSpread == 2) {
 				bagelSpread = "Chocosplosion";
-				// finalProcess();
+				finalProcess();
 			} else if (bagelSpread == 3) {
 				bagelSpread = "Salmon D-Lite";
-				// finalProcess();
+				finalProcess();
 			} else if (bagelSpread == 0) {
 				//leave this part go back to menu
 			} else {
@@ -213,6 +213,7 @@ function makeABagel() {
 		});
 		//Here's your bagel!
 	};
+	selectionProcess1();
 };
 
 
@@ -235,7 +236,7 @@ function makeABagel() {
 
 
 // bagelSelectMessage();
-selectionProcess1();
+makeABagel();
 
 
 
