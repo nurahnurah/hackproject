@@ -108,17 +108,17 @@ function makeABagel() {
 		//bagel selection
 		//which bagel do you want?
 		bagelTypeMessage();
-		userPrompt.question("", function(bagelType) {
-			if (bagelType == 1) {
+		userPrompt.question("", function(choice) {
+			if (choice == 1) {
 				bagelType = "Superman";
 				selectionProcess2();
-			} else if (bagelType == 2) {
+			} else if (choice == 2) {
 				bagelType = "Kimchi";
 				selectionProcess2();
-			} else if (bagelType == 3) {
+			} else if (choice == 3) {
 				bagelType = "Banana-Split";
 				selectionProcess2();
-			} else if (bagelType == 0) {
+			} else if (choice == 0) {
 				//leave this part go back to menu
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
@@ -136,17 +136,17 @@ function makeABagel() {
 		//toast selection
 		//which toast type do you want?
 		bagelToastMessage();
-		userPrompt.question("", function(bagelToast) {
-			if (bagelToast == 1) {
+		userPrompt.question("", function(choice) {
+			if (choice == 1) {
 				bagelToast = "Burnt";
 				selectionProcess3();
-			} else if (bagelToast == 2) {
+			} else if (choice == 2) {
 				bagelToast = "Lite";
 				selectionProcess3();
-			} else if (bagelToast == 3) {
+			} else if (choice == 3) {
 				bagelToast = "None";
 				selectionProcess3();
-			} else if (bagelToast == 0) {
+			} else if (choice == 0) {
 				//leave this part go back to menu
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
@@ -164,17 +164,17 @@ function makeABagel() {
 		//spread selection
 		//which spread do you want?
 		bagelSpreadMessage();
-		userPrompt.question("", function(bagelSpread) {
-			if (bagelSpread == 1) {
+		userPrompt.question("", function(choice) {
+			if (choice == 1) {
 				bagelSpread = "Funfetti";
 				finalProcess();
-			} else if (bagelSpread == 2) {
+			} else if (choice == 2) {
 				bagelSpread = "Chocosplosion";
 				finalProcess();
-			} else if (bagelSpread == 3) {
+			} else if (choice == 3) {
 				bagelSpread = "Salmon D-Lite";
 				finalProcess();
-			} else if (bagelSpread == 0) {
+			} else if (choice == 0) {
 				//leave this part go back to menu
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
@@ -189,7 +189,7 @@ function makeABagel() {
 		//Here's what you have
 		console.log("Alright so here's your order...");
 		sleep(1000);
-		console.log("Bagel:" + bagelType + " / Toasted: " + bagelToast + " / With a " + bagelSpread + " spread.");
+		console.log("Bagel: " + bagelType + " / Toasted: " + bagelToast + " / With a " + bagelSpread + " spread.");
 		sleep(1000);
 		//Your total will be... $$$
 		//sleep(1000);
