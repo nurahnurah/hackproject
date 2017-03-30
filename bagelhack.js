@@ -62,8 +62,8 @@ function Bagel(type, toast, spread, price) {
 };
 
 
-lastBagel = new Bagel(Kimchi, Burnt, Chocosplosion, 44.97)
-
+lastBagel = new Bagel("Kimchi", "Burnt", "Chocosplosion", 44.97)
+bagelsMade.push(lastBagel);
 
 
 
@@ -106,8 +106,7 @@ function mainMenu() {
 		if (choice == 1) {
 			makeABagel();
 		} else if (choice == 2) {
-			// recallBagel();
-			console.log("Error, inoperable.")
+			recallBagel();
 		} else if (choice == 3) {
 			process.exit();
 		} else {
@@ -127,7 +126,18 @@ function mainMenu() {
 
 
 function recallBagel() {
-	
+	//wipe screen and call out all stuff that was ordered previously
+	wipeScreen();
+	console.log("Most recently ordered bagels are at the bottom.\n");
+	sleep(1000);
+	for (var i in bagelsMade){
+		console.log(" • "+bagelsMade[i].type + ", Toast: "+bagelsMade[i].toast+ ", with a "+bagelsMade[i].spread+". Total: $" +bagelsMade[i].price);
+		sleep(500);
+	}
+
+	userPrompt.question("\nHit Enter to return.", function(entry) {
+		mainMenu();
+	});
 }
 
 
@@ -249,18 +259,19 @@ function makeABagel() {
 	function finalProcess() {
 		//Here's what you have
 		wipeScreen();
-		console.log("Alright so here's your order...");
+		console.log("Alright so here's your order...\n");
 		sleep(1000);
 		console.log("Bagel: " + bagelType + " / Toasted: " + bagelToast + " / With a " + bagelSpread + " spread.");
 		sleep(1000);
 		//Your total will be... $$$
 		//sleep(1000);
 		//Are you sure you want to toast this?
-		userPrompt.question("Is this correct? [y/n]\n\n", function(entry) {
+		userPrompt.question("\nIs this correct? [y/n]\n\n", function(entry) {
 			if (entry == "y") {
 				bagelPrice = bagelPrice.toFixed(2);
 				//Toasting...
-				userBagel = new Bagel(bagelType, bagelToast, bagelSpread, bagelPrice);
+				var userBagel = new Bagel(bagelType, bagelToast, bagelSpread, bagelPrice);
+				bagelsMade.push(userBagel);
 				sleep(1000);
 				wipeScreen();
 				console.log("Thank you, that will be $"+bagelPrice);
