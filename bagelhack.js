@@ -40,6 +40,8 @@ var bagelToastArray = ["Cancel Order", "Burnt", "Lite", "None"];
 
 var bagelSpreadArray = ["Cancel Order", "Funfetti", "Chocosplosion", "Salmon D-Lite"];
 
+var menuArray = ["Make a Bagel", "Recently Made Bagels", "Exit Bagel Maker"]
+
 var bagelsMade = [];
 
 
@@ -87,6 +89,45 @@ function bagelSpreadMessage() {
 	}
 };
 
+function menuMessage() {
+	for (var i in menuArray) {
+		console.log((parseInt(i)+1) + " " + menuArray[i]);
+	}
+};
+
+function mainMenu() {
+	//options available to user
+
+	wipeScreen();
+	console.log("Welcome to the Exotic Bagel Maker\n");
+	sleep(1000);
+	menuMessage();
+	userPrompt.question("\n", function(choice) {
+		if (choice == 1) {
+			makeABagel();
+		} else if (choice == 2) {
+			// recallBagel();
+			console.log("Error, inoperable.")
+		} else if (choice == 3) {
+			process.exit();
+		} else {
+			console.log("Sorry, please enter 1, 2, or 3 to go back.");
+			// sleep(2000);
+			sleep(1000);
+			mainMenu();
+		}
+	});
+	//make a new bagel
+
+
+	//check recently made bagels
+
+	//exit bagel machine
+}
+
+
+
+
 
 
 //Make Bagel Feature
@@ -96,6 +137,8 @@ function makeABagel() {
 	var bagelToast;
 	var bagelSpread;
 	var bagelPrice = 0.00;
+
+
 
 	//start new bagel process
 	wipeScreen();
@@ -109,7 +152,7 @@ function makeABagel() {
 		//bagel selection
 		//which bagel do you want?
 		wipeScreen();
-		console.log("What bagel type would you like?");
+		console.log("What bagel type would you like?\n");
 		bagelTypeMessage();
 		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
@@ -125,7 +168,7 @@ function makeABagel() {
 				bagelPrice += 14.99;
 				selectionProcess2();
 			} else if (choice == 0) {
-				//leave this part go back to menu
+				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
 				// sleep(2000);
@@ -142,7 +185,7 @@ function makeABagel() {
 		//toast selection
 		//which toast type do you want?
 		wipeScreen();
-		console.log("How would you like it toasted?");
+		console.log("How would you like it toasted?\n");
 		bagelToastMessage();
 		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
@@ -158,7 +201,7 @@ function makeABagel() {
 				bagelPrice += 50.99;
 				selectionProcess3();
 			} else if (choice == 0) {
-				//leave this part go back to menu
+				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
 				// sleep(2000);
@@ -175,7 +218,7 @@ function makeABagel() {
 		//spread selection
 		//which spread do you want?
 		wipeScreen();
-		console.log("Finally, what spread would you like?");
+		console.log("Finally, what spread would you like?\n");
 		bagelSpreadMessage();
 		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
@@ -191,7 +234,7 @@ function makeABagel() {
 				bagelPrice += 3.99;
 				finalProcess();
 			} else if (choice == 0) {
-				//leave this part go back to menu
+				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
 				// sleep(2000);
@@ -213,6 +256,7 @@ function makeABagel() {
 		//Are you sure you want to toast this?
 		userPrompt.question("Is this correct? [y/n]\n\n", function(entry) {
 			if (entry == "y") {
+				bagelPrice = bagelPrice.toFixed(2);
 				//Toasting...
 				userBagel = new Bagel(bagelType, bagelToast, bagelSpread, bagelPrice);
 				sleep(1000);
@@ -221,11 +265,14 @@ function makeABagel() {
 				sleep(1000);
 				sleep(1000);
 				console.log("...Ding! Bagel's done. Please enjoy!");
-				console.log(userBagel);
+				sleep(2000);
+				sleep(1000);
+				mainMenu();
 			} else if (entry == "n" ) {
 				//Either start over, change something specific, or quit.
 				console.log("Ok then we won't make it jeez.");
-				process.exit();
+				sleep(1000);
+				mainMenu();
 			} else {
 				console.log("Sorry, please enter y or n.");
 				sleep(1000);
@@ -257,7 +304,8 @@ function makeABagel() {
 
 
 // bagelSelectMessage();
-makeABagel();
+// makeABagel();
+mainMenu();
 
 
 
