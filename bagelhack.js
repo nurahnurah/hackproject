@@ -34,11 +34,11 @@ var wipeScreen = function () {
 //Bagel base
 
 
-var bagelTypeArray = ["Superman", "Kimchi", "Banana-Split"];
+var bagelTypeArray = ["Cancel Order", "Superman", "Kimchi", "Banana-Split"];
 
-var bagelToastArray = ["Burnt", "Lite", "None"];
+var bagelToastArray = ["Cancel Order", "Burnt", "Lite", "None"];
 
-var bagelSpreadArray = ["Funfetti", "Chocosplosion", "Salmon D-Lite"];
+var bagelSpreadArray = ["Cancel Order", "Funfetti", "Chocosplosion", "Salmon D-Lite"];
 
 var bagelsMade = [];
 
@@ -71,19 +71,19 @@ function Bagel(type, toast, spread, price) {
 //Screen displayers
 function bagelTypeMessage() {
 	for (var i in bagelTypeArray) {
-		console.log((parseInt(i)+1) + " " + bagelTypeArray[i]);
+		console.log((parseInt(i)) + " " + bagelTypeArray[i]);
 	}
 };
 
 function bagelToastMessage() {
 	for (var i in bagelToastArray) {
-		console.log((parseInt(i)+1) + " " + bagelToastArray[i]);
+		console.log((parseInt(i)) + " " + bagelToastArray[i]);
 	}
 };
 
 function bagelSpreadMessage() {
 	for (var i in bagelSpreadArray) {
-		console.log((parseInt(i)+1) + " " + bagelSpreadArray[i]);
+		console.log((parseInt(i)) + " " + bagelSpreadArray[i]);
 	}
 };
 
@@ -95,6 +95,7 @@ function makeABagel() {
 	var bagelType;
 	var bagelToast;
 	var bagelSpread;
+	var bagelPrice = 0.00;
 
 	//start new bagel process
 	wipeScreen();
@@ -110,15 +111,18 @@ function makeABagel() {
 		wipeScreen();
 		console.log("What bagel type would you like?");
 		bagelTypeMessage();
-		userPrompt.question("", function(choice) {
+		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
 				bagelType = "Superman";
+				bagelPrice += 44.99;
 				selectionProcess2();
 			} else if (choice == 2) {
 				bagelType = "Kimchi";
+				bagelPrice += 3.99;
 				selectionProcess2();
 			} else if (choice == 3) {
 				bagelType = "Banana-Split";
+				bagelPrice += 14.99;
 				selectionProcess2();
 			} else if (choice == 0) {
 				//leave this part go back to menu
@@ -140,15 +144,18 @@ function makeABagel() {
 		wipeScreen();
 		console.log("How would you like it toasted?");
 		bagelToastMessage();
-		userPrompt.question("", function(choice) {
+		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
 				bagelToast = "Burnt";
+				bagelPrice += 6.99;
 				selectionProcess3();
 			} else if (choice == 2) {
 				bagelToast = "Lite";
+				bagelPrice += 8.99;
 				selectionProcess3();
 			} else if (choice == 3) {
 				bagelToast = "None";
+				bagelPrice += 50.99;
 				selectionProcess3();
 			} else if (choice == 0) {
 				//leave this part go back to menu
@@ -170,15 +177,18 @@ function makeABagel() {
 		wipeScreen();
 		console.log("Finally, what spread would you like?");
 		bagelSpreadMessage();
-		userPrompt.question("", function(choice) {
+		userPrompt.question("\n", function(choice) {
 			if (choice == 1) {
 				bagelSpread = "Funfetti";
+				bagelPrice += 8.99;
 				finalProcess();
 			} else if (choice == 2) {
 				bagelSpread = "Chocosplosion";
+				bagelPrice += 33.99;
 				finalProcess();
 			} else if (choice == 3) {
 				bagelSpread = "Salmon D-Lite";
+				bagelPrice += 3.99;
 				finalProcess();
 			} else if (choice == 0) {
 				//leave this part go back to menu
@@ -201,10 +211,14 @@ function makeABagel() {
 		//Your total will be... $$$
 		//sleep(1000);
 		//Are you sure you want to toast this?
-		userPrompt.question("Is this correct? [y/n]", function(entry) {
+		userPrompt.question("Is this correct? [y/n]\n\n", function(entry) {
 			if (entry == "y") {
 				//Toasting...
-				userBagel = new Bagel(bagelType, bagelToast, bagelSpread);
+				userBagel = new Bagel(bagelType, bagelToast, bagelSpread, bagelPrice);
+				sleep(1000);
+				wipeScreen();
+				console.log("Thank you, that will be $"+bagelPrice);
+				sleep(1000);
 				sleep(1000);
 				console.log("...Ding! Bagel's done. Please enjoy!");
 				console.log(userBagel);
