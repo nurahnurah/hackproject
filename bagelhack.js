@@ -179,7 +179,7 @@ function makeABagel() {
 				bagelType = "Banana-Split";
 				bagelPrice += 14.99;
 				selectionProcess2();
-			} else if (choice == 0) {
+			} else if (choice == "0") {
 				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
@@ -212,7 +212,7 @@ function makeABagel() {
 				bagelToast = "None";
 				bagelPrice += 50.99;
 				selectionProcess3();
-			} else if (choice == 0) {
+			} else if (choice == "0") {
 				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
@@ -245,7 +245,7 @@ function makeABagel() {
 				bagelSpread = "Salmon D-Lite";
 				bagelPrice += 3.99;
 				finalProcess();
-			} else if (choice == 0) {
+			} else if (choice == "0") {
 				mainMenu();
 			} else {
 				console.log("Sorry, please enter 1, 2, 3, or 0 to go back.");
