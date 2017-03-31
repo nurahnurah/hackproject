@@ -43,11 +43,11 @@ var bagelToastPriceArray = ["", "6.99", "8.99", "50.99"];
 var bagelSpreadArray = ["Cancel Order", "Funfetti", "Chocosplosion", "Salmon D-Lite"];
 var bagelSpreadPriceArray = ["", "8.99", "33.99", "3.99"];
 
-var menuArray = ["Make a Bagel", "Recently Made Bagels", "Exit Bagel Maker"]
+var menuArray = ["Make a Bagel", "Recently Made Bagels", "Exit Bagel Maker"];
 
 var bagelsMade = [];
 
-
+var stuckBagel = Math.floor(Math.random()*10)+1;
 //Constructors******************
 
 
@@ -62,10 +62,10 @@ function Bagel(type, toast, spread, price) {
 	this.toast = toast;
 	this.spread = spread;
 	this.price = price;
-};
+}
 
 
-lastBagel = new Bagel("Kimchi", "Burnt", "Chocosplosion", 44.97)
+lastBagel = new Bagel("Kimchi", "Burnt", "Chocosplosion", 44.97);
 bagelsMade.push(lastBagel);
 
 
@@ -102,7 +102,7 @@ function mainMenu() {
 	//options available to user
 
 	wipeScreen();
-	console.log("Welcome to the Exotic Bagel Maker\n");
+	console.log("Welcome to the Exotic Bagel Maker\nPlease make your selection below:\n");
 	sleep(1000);
 	menuMessage();
 	userPrompt.question("\n", function(choice) {
@@ -157,7 +157,7 @@ function makeABagel() {
 
 	//start new bagel process
 	wipeScreen();
-	console.log("Let's make a Bagel!")
+	console.log("Let's make a Bagel!");
 	sleep(1000);
 
 	function selectionProcess1() {
@@ -270,7 +270,9 @@ function makeABagel() {
 		//sleep(1000);
 		//Are you sure you want to toast this?
 		userPrompt.question("\nIs this correct? [y/n]\n\n", function(entry) {
-			if (entry == "y") {
+			//console.log (stuckBagel);
+			if (entry == "y" && stuckBagel>=2){
+			//if (entry == "y") {
 				bagelPrice = bagelPrice.toFixed(2);
 				//Toasting...
 				var userBagel = new Bagel(bagelType, bagelToast, bagelSpread, bagelPrice);
@@ -282,6 +284,12 @@ function makeABagel() {
 				sleep(1000);
 				console.log("...Ding! Bagel's done. Please enjoy!");
 				sleep(2000);
+				sleep(1000);
+				mainMenu();
+			} else if (entry == "y" && stuckBagel<2) {
+				//Either start over, change something specific, or quit.
+				console.log("Uh Oh. Your bagel got stuck. \nPlease call the following number for a refund:\n1-800-555-1234.");
+				sleep(1000);
 				sleep(1000);
 				mainMenu();
 			} else if (entry == "n" ) {
@@ -323,10 +331,8 @@ function makeABagel() {
 // makeABagel();
 mainMenu();
 
-
-
-
-
+;
+	
 
 
 
