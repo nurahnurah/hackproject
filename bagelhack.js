@@ -271,7 +271,8 @@ function makeABagel() {
 		//Are you sure you want to toast this?
 		userPrompt.question("\nIs this correct? [y/n]\n\n", function(entry) {
 			//console.log (stuckBagel);
-			if (entry == "y" && stuckBagel>=2){
+			entrytoLC = entry.toLowerCase();
+			if (entrytoLC == "y" && stuckBagel>=2){
 			//if (entry == "y") {
 				bagelPrice = bagelPrice.toFixed(2);
 				//Toasting...
@@ -286,13 +287,13 @@ function makeABagel() {
 				sleep(2000);
 				sleep(1000);
 				mainMenu();
-			} else if (entry == "y" && stuckBagel<2) {
+			} else if (entrytoLC == "y" && stuckBagel<2) {
 				//Either start over, change something specific, or quit.
 				console.log("Uh Oh. Your bagel got stuck. \nPlease call the following number for a refund:\n1-800-555-1234.");
 				sleep(1000);
 				sleep(1000);
 				mainMenu();
-			} else if (entry == "n" ) {
+			} else if (entrytoLC == "n" ) {
 				//Either start over, change something specific, or quit.
 				console.log("Ok then we won't make it jeez.");
 				sleep(1000);
